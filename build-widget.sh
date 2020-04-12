@@ -22,7 +22,7 @@ fi
 
 if [ -f "$1.widget.html" ]
 then
-   cat $1.widget.html | awk '{gsub(/\"/,"\\\""); gsub(/\t/,"\\t"); printf "%s\\n", $0;}' | sed -e "/%%SETTINGS%%/ {" -e 'r $1.settings.json' -e 'd' -e '}' -e "s/%%HTML%%/$(</dev/stdin sed -e 's/[\&/]/\\&/g' | tr -d '\n')/" $1.template > "$dir/widget/$widget.widget.json"
+   cat $1.widget.html | awk '{gsub(/\"/,"\\\""); gsub(/\t/,"\\t"); printf "%s\\n", $0;}' | sed -e "/%%SETTINGS%%/ {" -e "r $1.settings.json" -e 'd' -e '}' -e "s/%%HTML%%/$(</dev/stdin sed -e 's/[\&/]/\\&/g' | tr -d '\n')/" $1.template > "$dir/widget/$widget.widget.json"
    echo "Wrote widget to $dir/widget/$widget.widget.json"
 else
    echo "Widget $1 does not exists."
