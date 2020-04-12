@@ -1,0 +1,71 @@
+{
+    "template": "<style>\n.myswitch {  position: relative;  display: inline-block;  width: 60px;  height: 30px;  left: 20px;}\n.myswitch input {display:none;}\n.myslider {  position: absolute;  cursor: pointer;  top: 0;  left: 0;  right: 0;  bottom: 0;  background-color: #3F4F5F; -webkit-transition: 0s;  transition: .2s;}\n.myslider:before {  position: absolute;  content: \"\";  height: 22px;  width: 22px;  left: 8px;  bottom: 4px;  background-color: white;  -webkit-transition: 0s;  transition: .2s;}\ninput:checked + .myslider {  background-color: #26FF33; }\ninput:focus + .myslider {  box-shadow: 0 0 1px #26FF33; }\ninput:checked + .myslider:before {  -webkit-transform: translateX(26px);  -ms-transform: translateX(26px);  transform: translateX(26px);}\n.myslider.round {  border-radius: 30px;}\n.myslider.round:before {  border-radius: 50%;}\n.nosliderOff {  position: absolute;  cursor: pointer;  top: 0;  left: 0;  right: 0;  bottom: 0;  width: 45px;  background-color: #3F4F5F; }\n.nosliderOff.round {  border-radius: 30px;} \n.nosliderOn {  position: absolute;  cursor: pointer;  top: 0;  left: 0;  right: 0;  bottom: 0;  width: 45px;  background-color: #26FF33; }\n.nosliderOn.round {  border-radius: 30px;}  \n<!-- thanks to ... for style @ https://community.openhab.org/t/template-for-many-switches-in-a-group/21739 -->\n</style>\n<div ng-if=\"(config.item_header!='')\">\n    <div ng-if=\"config.item_showsummary\"><h4>{{config.item_header}} : {{(itemsInGroup(config.item_groupid) | filter:{state:'ON'}).length}} von {{(itemsInGroup(config.item_groupid)).length}}</h4></div>\n    <div ng-if=\"!config.item_showsummary\"><h4>{{config.item_header}}</h4></div>\n</div>\n<table class=\"table \">\n    <tr ng-repeat=\"item in itemsInGroup(config.item_groupid)\">\n\n      <td class=\"text-right\"><div style=\"height:25px; padding-top:4px;\">{{item.label.substr(config.item_skipncharsindescription,99)}}\n        <div ng-if=\"(config.item_type=='Rollershutter')\">{{itemState(item.name)}}%</div></div></td>\n        <td class=\"text-left\">\n            <div ng-if=\"(config.item_type=='Switch')\">\n\t\t\t\t\t\t\t\t<div style=\"height:30px;\"><label class=\"myswitch\">\n                  <input type=\"checkbox\" ng-checked=\"(itemValue(item.name)=='ON')||(itemValue(item.name)>0)\" ng-click=\"sendCmd(item.name, (itemValue(item.name)=='OFF') ? 'ON':'OFF')\"/><div class=\"myslider round\"></div></label>\n              </div>\n            </div>\n            <div ng-if=\"(config.item_type=='Window')\">\n                <div ng-style=\"{'background-color': (itemState(item.name)=='OPEN') ? '#26FF33' : 'transparent' }\">\n                    <button style=\"width: 100%; height: 2em; border: 0; color: white; background: transparent; font-size: 16px\" ng-click=\"\">\n                        <div ng-if=\"((config.item_icon_iconset)==NULL)\"><widget-icon iconset=\"'freepik-household'\" icon=\"'window-9'\" /></div>\n                        <div ng-if=\"((config.item_icon_iconset)!=NULL)\"><widget-icon iconset='config.item_icon_iconset' icon='config.item_icon' /></div>\n                    </button>\n                </div>\n            </div>\n            <div ng-if=\"(config.item_type=='Showvalues_ON')\">\n              <div ng-style=\"{'height': (itemValue(item.name + '_soll')!='N/A') ? '40px' : '25px' }\">\n                    <button style=\"width:100%; height: 2em; border: 0; color: white; background: transparent; font-size: 16px\" ng-click=\"\">\n                      <div ng-style=\"{'background-color': (itemState(item.name)=='ON') ? '#26FF33' : 'transparent' }\">\n                        {{itemState(item.name).substr(0,4)}}{{config.item_unit.replace(\"_\",\" \")}}\n                        <div ng-if=\"(config.item_extension!=NULL)\">\n                          <div ng-if=\"itemValue(item.name + config.item_extension)!='N/A'\">\n                            <div style=\"color:#606060;\"> \n                        \t\t[ {{itemState(item.name+config.item_extension).substr(0,4)}}{{config.item_unit.replace(\"_\",\" \")}} ]\n                            </div>\n                          </div>\n                        </div>\n                      </div>\n                    </button>\n              </div>\n            </div>\n            <div ng-if=\"(config.item_type=='Showvalues_OFF')\">\n              <div ng-style=\"{'height': (itemValue(item.name + '_soll')!='N/A') ? '40px' : '25px' }\">\n                    <button style=\"width:100%; height: 2em; border: 0; color: white; background: transparent; font-size: 16px\" ng-click=\"\">\n                      <div ng-style=\"{'background-color': (itemState(item.name)=='OFF') ? '#26FF33' : 'transparent' }\">\n                        {{itemState(item.name).substr(0,4)}}{{config.item_unit.replace(\"_\",\" \")}}\n                        <div ng-if=\"(config.item_extension!=NULL)\">\n                          <div ng-if=\"itemValue(item.name + config.item_extension)!='N/A'\">\n                            <div style=\"color:#606060;\"> \n                        \t\t[ {{itemState(item.name+config.item_extension).substr(0,4)}}{{config.item_unit.replace(\"_\",\" \");}} ]\n                            </div>\n                          </div>\n                        </div>\n                      </div>\n                    </button>\n              </div>\n            </div>\n\n          \n          <div ng-if=\"(config.item_type=='Toggle')\">\n                    <button style=\"width:45%; height: 2em; border: 0; color: white; background: transparent; font-size: 16px\" ng-click=\"sendCmd((item.name), (itemState(item.name)!='ON')?'ON':'OFF')\">\n                      <div ng-style=\"{'background-color': (itemState(item.name)=='ON') ? '#26FF33' : 'transparent' }\">\n                        <div ng-if=\"((config.item_icon_iconset)==NULL)\"><widget-icon iconset=\"'freepik-household'\" icon=\"'light-bulb-1'\" /></div>\n                        <div ng-if=\"((config.item_icon_iconset)!=NULL)\"><widget-icon iconset='config.item_icon_iconset' icon='config.item_icon' /></div>\n                      </div>\n                    </button>\n                    <button style=\"width: 45%; height: 2em; border: 0; color: white; background: transparent; font-size: 16px\" ng-click=\"sendCmd((item.name), (itemState(item.name)!='ON')?'ON':'OFF')\">\n                      <div ng-style=\"{'background-color': (itemState(item.name)=='OFF') ? '#003399' : 'transparent' }\">\n                        <div ng-if=\"((config.item_icon_iconset)==NULL)\"><widget-icon iconset=\"'freepik-household'\" icon=\"'light-bulb-1'\" /></div>\n                        <div ng-if=\"((config.item_icon_iconset)!=NULL)\"><widget-icon iconset='config.item_icon_iconset' icon='config.item_icon' /></div>\n                      </div>\n                    </button>\n            </div>\n\n            \t<div ng-if=\"(config.item_type=='Rollershutter')\">\n                <div style=\"height:40px;\">\n                <button style=\"width: 15%; height: 2em; border: 0; color: white; background: transparent; font-size: 16px\" ng-click=\"sendCmd((item.name), 'UP')\">&uarr;</button>\n                <button style=\"width: 50%; height: 2em; border: 0; color: white; background: transparent; font-size: 16px\" ng-click=\"sendCmd((item.name), 'STOP')\">Stop</button>\n                <button style=\"width: 15%; height: 2em; border: 0; color: white; background: transparent; font-size: 16px\" ng-click=\"sendCmd((item.name), 'DOWN')\">&darr;</button>\n                </div>\n            </div>\n        </td>\n    </tr>\n  \n   <tr >\n        <td class=\"text-right\">\n          <div ng-if=\"(config.item_switchgroupall)\">{{config.item_header}}</div>\n     \t\t</td>\n        <td class=\"text-left\">\n\t\t\t  <div ng-if=\"(config.item_switchgroupall)\">\n              <div ng-if=\"((config.item_type=='Toggle') || ((config.item_type=='Switch')))\">\n                <label class=\"myswitch\"><input type=\"checkbox\" ng-checked=\"false\" ng-click=\"sendCmd(config.item_groupid, 'OFF')\"/><div class=\"nosliderOff round\"></div></label>\n                <label class=\"myswitch\"><input type=\"checkbox\" ng-checked=\"true\" ng-click=\"sendCmd(config.item_groupid, 'ON')\"/><div class=\"nosliderOn round\"></div></label> \n              </div>\n\n            \t<div ng-if=\"(config.item_type=='Rollershutter')\">\n                <button style=\"width: 15%; height: 2em; border: 0; color: white; background: transparent; font-size: 16px\" ng-click=\"sendCmd((config.item_groupid), 'UP')\">&uarr;</button>\n                <button style=\"width: 50%; height: 2em; border: 0; color: white; background: transparent; font-size: 16px\" ng-click=\"sendCmd((config.item_groupid), 'STOP')\">Stop</button>\n                <button style=\"width: 15%; height: 2em; border: 0; color: white; background: transparent; font-size: 16px\" ng-click=\"sendCmd((config.item_groupid), 'DOWN')\">&darr;</button>\n            </div>\n          </div>\n        </td>\n    </tr>\n  \n</table>\n",
+    "name": "MultiState / MultiItem display of a group of values in one widget",
+    "author": "Michael Martens",
+    "description": "V1 - Nov 2017 - Items of a group are shown, depending on config they are just displayed or can be changed.",
+    "settings": [
+        {
+            "type": "string",
+            "id": "item_header",
+            "label": "Header of table",
+            "default": "Erdgeschoss",
+            "description": "Enter a header, if needed"
+        },
+        {
+            "type": "item",
+            "id": "item_groupid",
+            "label": "GroupID",
+            "default": "gEG",
+            "description": "Enter the group to visualize"
+        },
+        {
+            "type": "icon",
+            "id": "item_icon",
+            "label": "Iconset and Icon to be displayed",
+            "description": "What icon shall be used (e.g.: freepik-household, light-bulb-1); If empty, these icons are used"
+        },
+        {
+            "type": "choice",
+            "choices": "Switch,Toggle,Rollershutter,Window,Showvalues_ON,Showvalues_OFF",
+            "id": "item_type",
+            "label": "Type of items to display",
+            "default": "Switch",
+            "description": "Enter here the type of switch to allow proper selection; Showvalues_O.. showing green for the selected value"
+        },
+        {
+            "type": "number",
+            "id": "item_skipncharsindescription",
+            "label": "Skip first n chars in description",
+            "default": "0",
+            "description": "if all labels start with \"EG..\" you can skip them by entering a number of chars"
+        },
+        {
+            "type": "checkbox",
+            "id": "item_showsummary",
+            "label": "Show summary of states",
+            "default": true,
+            "description": "Check if you want to see how many items are in the \"on\" state"
+        },
+        {
+            "type": "checkbox",
+            "id": "item_switchgroupall",
+            "label": "Offer general switch for all items",
+            "description": "Check here to switch all items at once (No for Windows usefull)",
+            "default": true
+        },
+        {
+            "type": "string",
+            "id": "item_extension",
+            "label": "Additional value",
+            "default": "",
+            "description": "If a second value shall be displayed as a reference, the name variable must be identical plus the value. E.g. Temp1 and Temp1_soll by naming \"_soll\""
+        },
+        {
+            "type": "string",
+            "id": "item_unit",
+            "label": "Unit",
+            "description": "If a unit shall be displayed, enter it here. E.g. \"_°C\" - with a leading underscore (converted to blanks) to create a distance"
+        }
+    ]
+
+}

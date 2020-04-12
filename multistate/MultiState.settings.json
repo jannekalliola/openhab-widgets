@@ -1,0 +1,65 @@
+    "settings": [
+        {
+            "type": "string",
+            "id": "item_header",
+            "label": "Header of table",
+            "default": "Erdgeschoss",
+            "description": "Enter a header, if needed"
+        },
+        {
+            "type": "item",
+            "id": "item_groupid",
+            "label": "GroupID",
+            "default": "gEG",
+            "description": "Enter the group to visualize"
+        },
+        {
+            "type": "icon",
+            "id": "item_icon",
+            "label": "Iconset and Icon to be displayed",
+            "description": "What icon shall be used (e.g.: freepik-household, light-bulb-1); If empty, these icons are used"
+        },
+        {
+            "type": "choice",
+            "choices": "Switch,Toggle,Rollershutter,Window,Showvalues_ON,Showvalues_OFF",
+            "id": "item_type",
+            "label": "Type of items to display",
+            "default": "Switch",
+            "description": "Enter here the type of switch to allow proper selection; Showvalues_O.. showing green for the selected value"
+        },
+        {
+            "type": "number",
+            "id": "item_skipncharsindescription",
+            "label": "Skip first n chars in description",
+            "default": "0",
+            "description": "if all labels start with \"EG..\" you can skip them by entering a number of chars"
+        },
+        {
+            "type": "checkbox",
+            "id": "item_showsummary",
+            "label": "Show summary of states",
+            "default": true,
+            "description": "Check if you want to see how many items are in the \"on\" state"
+        },
+        {
+            "type": "checkbox",
+            "id": "item_switchgroupall",
+            "label": "Offer general switch for all items",
+            "description": "Check here to switch all items at once (No for Windows usefull)",
+            "default": true
+        },
+        {
+            "type": "string",
+            "id": "item_extension",
+            "label": "Additional value",
+            "default": "",
+            "description": "If a second value shall be displayed as a reference, the name variable must be identical plus the value. E.g. Temp1 and Temp1_soll by naming \"_soll\""
+        },
+        {
+            "type": "string",
+            "id": "item_unit",
+            "label": "Unit",
+            "description": "If a unit shall be displayed, enter it here. E.g. \"_°C\" - with a leading underscore (converted to blanks) to create a distance"
+        }
+    ]
+
