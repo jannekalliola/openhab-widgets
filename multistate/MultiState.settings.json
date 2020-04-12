@@ -3,7 +3,7 @@
             "type": "string",
             "id": "item_header",
             "label": "Header of table",
-            "default": "Erdgeschoss",
+            "default": "",
             "description": "Enter a header, if needed"
         },
         {
@@ -35,18 +35,24 @@
             "description": "if all labels start with \"EG..\" you can skip them by entering a number of chars"
         },
         {
+            "type": "string",
+            "id": "item_replacestring",
+            "label": "Replace string in description",
+            "description": "If there is an extra string in the item description, it can be defined here and get removed from the user interface."
+        },
+        {
             "type": "checkbox",
             "id": "item_showsummary",
             "label": "Show summary of states",
-            "default": true,
+            "default": false,
             "description": "Check if you want to see how many items are in the \"on\" state"
         },
         {
             "type": "checkbox",
             "id": "item_switchgroupall",
             "label": "Offer general switch for all items",
-            "description": "Check here to switch all items at once (No for Windows usefull)",
-            "default": true
+            "description": "Check here to switch all items at once (No for Windows useful)",
+            "default": false
         },
         {
             "type": "string",

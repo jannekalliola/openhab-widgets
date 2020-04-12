@@ -11,22 +11,25 @@ input:checked + .myslider:before {  -webkit-transform: translateX(26px);  -ms-tr
 .nosliderOff {  position: absolute;  cursor: pointer;  top: 0;  left: 0;  right: 0;  bottom: 0;  width: 45px;  background-color: #3F4F5F; }
 .nosliderOff.round {  border-radius: 30px;} 
 .nosliderOn {  position: absolute;  cursor: pointer;  top: 0;  left: 0;  right: 0;  bottom: 0;  width: 45px;  background-color: #26FF33; }
-.nosliderOn.round {  border-radius: 30px;}  
+.nosliderOn.round {  border-radius: 30px;}
+.switchOn { background-color: #395673; }
 <!-- thanks to ... for style @ https://community.openhab.org/t/template-for-many-switches-in-a-group/21739 -->
 </style>
 <div ng-if="(config.item_header!='')">
-    <div ng-if="config.item_showsummary"><h4>{{config.item_header}} : {{(itemsInGroup(config.item_groupid) | filter:{state:'ON'}).length}} von {{(itemsInGroup(config.item_groupid)).length}}</h4></div>
+    <div ng-if="config.item_showsummary"><h4>{{config.item_header}} : {{(itemsInGroup(config.item_groupid) | filter:{state:'ON'}).length}} of {{(itemsInGroup(config.item_groupid)).length}}</h4></div>
     <div ng-if="!config.item_showsummary"><h4>{{config.item_header}}</h4></div>
 </div>
 <table class="table ">
-    <tr ng-repeat="item in itemsInGroup(config.item_groupid)">
-
-      <td class="text-right"><div style="height:25px; padding-top:4px;">{{item.label.substr(config.item_skipncharsindescription,99)}}
+    <tr style="border-bottom: none;" ng-repeat="item in itemsInGroup(config.item_groupid) | orderBy:'label'">
+		<td ng-if="(config.item_type=='Switch')" ng-class="(itemValue(item.name)=='OFF' || itemValue(item.name)=='NULL' || itemValue(item.name)=='UNDEF' || itemValue(item.name)==0) ? 'switchOff':'switchOn'" colspan="2" style="padding: 0px;">
+			<div style="height:41px; padding: 8px; padding-top:12px;" ng-click="sendCmd(item.name, ((itemValue(item.name)=='OFF')||(itemValue(item.name)=='NULL' || itemValue(item.name)=='UNDEF')) ? 'ON':((itemValue(item.name)==0) ? 100:'OFF'))">{{item.label.substr(config.item_skipncharsindescription,99).replace(config.item_replacestring, '')}}</div>
+		</td>
+      	<td ng-if="(config.item_type!='Switch')" class="text-right"><div style="height:25px; padding-top:4px;">{{item.label.substr(config.item_skipncharsindescription,99).replace(config.item_replacestring, '')}}
         <div ng-if="(config.item_type=='Rollershutter')">{{itemState(item.name)}}%</div></div></td>
-        <td class="text-left">
+        <td class="text-left" ng-if="(config.item_type!='Switch')">
             <div ng-if="(config.item_type=='Switch')">
-								<div style="height:30px;"><label class="myswitch">
-                  <input type="checkbox" ng-checked="(itemValue(item.name)=='ON')||(itemValue(item.name)>0)" ng-click="sendCmd(item.name, (itemValue(item.name)=='OFF') ? 'ON':'OFF')"/><div class="myslider round"></div></label>
+				<div style="height:30px;"><label class="myswitch">
+                  <input type="checkbox" ng-checked="(itemValue(item.name)=='ON')||(itemValue(item.name)>0)" ng-click="sendCmd(item.name, ((itemValue(item.name)=='OFF')||(itemValue(item.name)=='NULL')) ? 'ON':((itemValue(item.name)==0) ? 100:'OFF'))"/><div class="myslider round"></div></label>
               </div>
             </div>
             <div ng-if="(config.item_type=='Window')">
