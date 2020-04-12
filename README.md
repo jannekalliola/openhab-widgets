@@ -23,6 +23,6 @@ OpenHAB stores a widget in a JSON file that contains everything and is thus quit
 
 To use the script, execute it in the shell:
 
-`./build-widget.sh multistate/MultiState
+`./build-widget.sh multistate/MultiState`
 
 The command builds `MultiState` widget in `multistate` directory and creates the final widget JSON into `multistate/widget/MultiState.widget.json`file, ready to be uploaded to OpenHAB.
