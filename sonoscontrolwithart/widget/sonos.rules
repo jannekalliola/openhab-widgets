@@ -1,0 +1,19 @@
+rule "Sonos Volume Up"
+when
+        Item Sonos_Volume_Up received command ON
+then
+        var Number v = Sonos_Volume.state as Number
+        var Number h = v + 1
+        if(h > 50) h = 50
+        Sonos_Volume.sendCommand(h)
+end
+
+rule "Sonos Volume Down"
+when
+        Item Sonos_Volume_Down received command ON
+then
+        var Number v = Sonos_Volume.state as Number
+        var Number h = v - 1
+        if(h < 0) h = 0
+        Sonos_Volume.sendCommand(h)
+end

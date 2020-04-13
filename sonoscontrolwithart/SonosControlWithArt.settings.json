@@ -1,31 +1,39 @@
     "settings": [
         {
             "type": "item",
-            "id": "media_art",
-            "label": "Image Art",
-            "description": "Artwork for video or album covers for music can be shown here and will make up the background image of the widget.",
-            "default": "SN_DiningRoom_currentalbumart"
+            "id": "media_art_url",
+            "label": "Image Art URL",
+            "description": "Artwork URL for video or album covers for music can be shown here and will make up the background image of the widget.",
+            "default": "SN_AlbumArtURL"
         },
         {
             "type": "item",
             "id": "media_player",
             "label": "Player Control",
             "description": "The media player we will send our strings to to control playback.",
-            "default": "SN_DiningRoom_Controller"
+            "default": "SN_PlayerControl"
         },
         {
             "type": "item",
             "id": "media_title",
             "label": "Title",
             "description": "Movie title or song track or artist can be used here.",
-            "default": "SN_DiningRoom_currenttitle"
+            "default": "SN_MediaTitle"
         },
         {
             "type": "item",
             "id": "media_artist",
-            "label": "Artist",
-            "default": "SN_DiningRoom_currentartist"
+            "label": "Artist", 
+            "description": "The current artist playing.",
+            "default": "SN_Artist"
         },
+		{
+			"type": "checkbox",
+			"id": "show_media_artist",
+			"label": "Display Artist",
+			"description": "Show the artist on the widget.",
+			"default": true
+		},
         {
             "type": "item",
             "id": "ChillButton",
