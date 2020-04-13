@@ -6,6 +6,11 @@ The repository contains the following widgets. **N.B.** The widgets are separate
 Read the separate README.md files in each widget directory for more information.
 
 * **MultiState** – provides a handy widget to control a group of switches or rollershutters.
+* **SonosControlWithArt** – control Sonos playback and shows album art.
+
+## OpenHAB widget
+
+A readymade OpenHAB widget can be found in `widget` directory under each widget. The name of the file is `WidgetName.widget.json` and it is ready to be uploaded to OpenHAB.
 
 ## Widget files
 

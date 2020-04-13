@@ -1,0 +1,7 @@
+{
+    "template": "%%HTML%%",
+    "name": "Sonos Media Widget",
+    "author": "Scootaash",
+    "description": "A media controller with image art and playback buttons suitable for music using Sonos", 
+    %%SETTINGS%%
+}

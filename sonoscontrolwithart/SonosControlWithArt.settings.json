@@ -1,0 +1,41 @@
+    "settings": [
+        {
+            "type": "item",
+            "id": "media_art",
+            "label": "Image Art",
+            "description": "Artwork for video or album covers for music can be shown here and will make up the background image of the widget.",
+            "default": "SN_DiningRoom_currentalbumart"
+        },
+        {
+            "type": "item",
+            "id": "media_player",
+            "label": "Player Control",
+            "description": "The media player we will send our strings to to control playback.",
+            "default": "SN_DiningRoom_Controller"
+        },
+        {
+            "type": "item",
+            "id": "media_title",
+            "label": "Title",
+            "description": "Movie title or song track or artist can be used here.",
+            "default": "SN_DiningRoom_currenttitle"
+        },
+        {
+            "type": "item",
+            "id": "media_artist",
+            "label": "Artist",
+            "default": "SN_DiningRoom_currentartist"
+        },
+        {
+            "type": "item",
+            "id": "ChillButton",
+            "default": "SN_SetVolsChill",
+            "description": "A switch item which sets all speakers to a chilled background volume"
+        },
+        {
+            "type": "item",
+            "id": "LoudButton",
+            "default": "SN_SetVolsLoud",
+            "description": "A switch item which sets all speakers to a loud party volume"
+        }
+    ]
