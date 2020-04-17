@@ -95,47 +95,42 @@
 
 
 		<div class="row sonos_control_row" style="border-top: 0px solid white; ">
-      <div class="col-sm-1 modgrid">&nbsp;</div>
-      <div class="col-sm-2 modgrid">
+      <div class="col-xs-1 modgrid">&nbsp;</div>
+      <div class="col-xs-2 modgrid">
          <button class="sonosbutton" style="background-image: url(/static/sonos/VolDown.png); background-size: contain; background-repeat: no-repeat;background-position: center center" 
             ng-click="sendCmd(config.ChillButton, 'ON')"> 
          </button>
     	</div>	
   
-    	<div class="col-sm-2 modgrid">
+    	<div class="col-xs-2 modgrid">
          <button class="sonosbutton" style="background-image: url(/static/sonos/Back.png); background-size: contain; background-repeat: no-repeat;background-position: center center" 
             ng-click="sendCmd(config.media_player, 'PREVIOUS')">
          </button>
    		 </div>	
  
-  
-  
-  		<div class="col-sm-2 modgrid" ng-if="itemValue(config.media_player) !='PLAY'">
+  		<div class="col-xs-2 modgrid" ng-if="itemValue(config.media_player) !='PLAY'">
        		<button class="sonosbutton" style="background-image: url(/static/sonos/Play.png); background-size: contain; background-repeat: no-repeat;background-position: center center" 
            	ng-click="sendCmd(config.media_player,'PLAY')">
            </button>     
 			</div>
 
-  		<div class="col-sm-2 modgrid" ng-if="itemValue(config.media_player) =='PLAY'">
+  		<div class="col-xs-2 modgrid" ng-if="itemValue(config.media_player) =='PLAY'">
        		<button class="sonosbutton" style="background-image: url(/static/sonos/Pause.png); background-size: contain; background-repeat: no-repeat;background-position: center center" 
            	ng-click="sendCmd(config.media_player,'PAUSE')">
            </button>     
 			</div>
   
-  
-  
-  
-    	<div class="col-sm-2 modgrid">
+    	<div class="col-xs-2 modgrid">
          <button class="sonosbutton" style="background-image: url(/static/sonos/Fwd.png); background-size: contain; background-repeat: no-repeat;background-position: center center" 
             ng-click="sendCmd(config.media_player, 'NEXT')">
          </button>
     	</div>		
 
-       <div class="col-sm-2 modgrid">
+       <div class="col-xs-2 modgrid">
          <button class="sonosbutton" style="background-image: url(/static/sonos/VolUp.png); background-size: contain; background-repeat: no-repeat;background-position: center center" 
             ng-click="sendCmd(config.LoudButton, 'ON')">
          </button>
     		</div>	
-      <div class="col-sm-1 modgrid">&nbsp;</div>
+      <div class="col-xs-1 modgrid">&nbsp;</div>
       </div>  
   </div>
