@@ -30,7 +30,7 @@ input:checked + .myslider:before {  -webkit-transform: translateX(26px);  -ms-tr
 		<td ng-if="(config.item_type!='Switch')" class="text-right">
 			<div ng-if="(config.item_type!='Rollershutter')" style="height:25px; padding-top:4px;">{{item.label.substr(config.item_skipncharsindescription,99).replace(config.item_replacestring, '')}}</div>
 			<div ng-if="(config.item_type=='Rollershutter')" style="height: 40px; line-height: 40px;">{{item.label.substr(config.item_skipncharsindescription,99).replace(config.item_replacestring, '')}}
-				<div style="height: 40px; line-height: 40px; float: right; width: 75px; font-size: 24px;">{{itemState(item.name)}}%</div>
+				<div style="height: 40px; line-height: 40px; float: right; width: 75px; font-size: 24px;">{{(itemState(item.name) != 'NULL') ? itemState(item.name) + '%' : ''}}</div>
 			</div>
 		</td>
         <td class="text-left" ng-if="(config.item_type!='Switch')">

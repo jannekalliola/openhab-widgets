@@ -16,3 +16,4 @@ Changes:
 * A new configuration setting to remove extra words from the items. For example, if the item labels end with "Light" for Amazon Alexa, it can be removed to make the widget more pleasant to the eye. The word can be be in any location of the label.
 * Some extra checks to set the item to a good state when it has not been initialised by OpenHAB yet. This is the case, for example, for KNX devices that are not been activated after OpenHAB has been restarted.
 * Buttons do not get hovering borders after clicking anymore.
+* If OpenHAB does not know the position of a rollershutter, it gives NULL value. This is no longer shown in the UI.
