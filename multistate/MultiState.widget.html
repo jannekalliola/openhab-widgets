@@ -26,8 +26,12 @@ input:checked + .myslider:before {  -webkit-transform: translateX(26px);  -ms-tr
 		<td ng-if="(config.item_type=='Switch')" ng-class="(itemValue(item.name)=='OFF' || itemValue(item.name)=='NULL' || itemValue(item.name)=='UNDEF' || itemValue(item.name)==0) ? 'switchOff':'switchOn'" colspan="2" style="padding: 0px;">
 			<div style="height:41px; padding: 8px; padding-top:12px;" ng-click="sendCmd(item.name, ((itemValue(item.name)=='OFF')||(itemValue(item.name)=='NULL' || itemValue(item.name)=='UNDEF')) ? 'ON':((itemValue(item.name)==0) ? 100:'OFF'))">{{item.label.substr(config.item_skipncharsindescription,99).replace(config.item_replacestring, '')}}</div>
 		</td>
-      	<td ng-if="(config.item_type!='Switch')" class="text-right"><div style="height:25px; padding-top:4px;">{{item.label.substr(config.item_skipncharsindescription,99).replace(config.item_replacestring, '')}}
-        <div ng-if="(config.item_type=='Rollershutter')">{{itemState(item.name)}}%</div></div></td>
+		<td ng-if="(config.item_type!='Switch')" class="text-right">
+			<div ng-if="(config.item_type!='Rollershutter')" style="height:25px; padding-top:4px;">{{item.label.substr(config.item_skipncharsindescription,99).replace(config.item_replacestring, '')}}</div>
+			<div ng-if="(config.item_type=='Rollershutter')" style="height: 40px; line-height: 40px;">{{item.label.substr(config.item_skipncharsindescription,99).replace(config.item_replacestring, '')}}
+				<div style="height: 40px; line-height: 40px; float: right; width: 75px; font-size: 24px;">{{itemState(item.name)}}%</div>
+			</div>
+		</td>
         <td class="text-left" ng-if="(config.item_type!='Switch')">
             <div ng-if="(config.item_type=='Switch')">
 				<div style="height:30px;"><label class="myswitch">
@@ -36,7 +40,7 @@ input:checked + .myslider:before {  -webkit-transform: translateX(26px);  -ms-tr
             </div>
             <div ng-if="(config.item_type=='Window')">
                 <div ng-style="{'background-color': (itemState(item.name)=='OPEN') ? '#26FF33' : 'transparent' }">
-                    <button style="width: 100%; height: 2em; border: 0; color: white; background: transparent; font-size: 16px" ng-click="">
+                    <button style="width: 100%; height: 2em; border: 0; color: white; background: transparent; outline: 0 none; font-size: 16px" ng-click="">
                         <div ng-if="((config.item_icon_iconset)==NULL)"><widget-icon iconset="'freepik-household'" icon="'window-9'" /></div>
                         <div ng-if="((config.item_icon_iconset)!=NULL)"><widget-icon iconset='config.item_icon_iconset' icon='config.item_icon' /></div>
                     </button>
@@ -44,7 +48,7 @@ input:checked + .myslider:before {  -webkit-transform: translateX(26px);  -ms-tr
             </div>
             <div ng-if="(config.item_type=='Showvalues_ON')">
               <div ng-style="{'height': (itemValue(item.name + '_soll')!='N/A') ? '40px' : '25px' }">
-                    <button style="width:100%; height: 2em; border: 0; color: white; background: transparent; font-size: 16px" ng-click="">
+                    <button style="width:100%; height: 2em; border: 0; color: white; background: transparent; outline: 0 none; font-size: 16px" ng-click="">
                       <div ng-style="{'background-color': (itemState(item.name)=='ON') ? '#26FF33' : 'transparent' }">
                         {{itemState(item.name).substr(0,4)}}{{config.item_unit.replace("_"," ")}}
                         <div ng-if="(config.item_extension!=NULL)">
@@ -60,7 +64,7 @@ input:checked + .myslider:before {  -webkit-transform: translateX(26px);  -ms-tr
             </div>
             <div ng-if="(config.item_type=='Showvalues_OFF')">
               <div ng-style="{'height': (itemValue(item.name + '_soll')!='N/A') ? '40px' : '25px' }">
-                    <button style="width:100%; height: 2em; border: 0; color: white; background: transparent; font-size: 16px" ng-click="">
+                    <button style="width:100%; height: 2em; border: 0; color: white; background: transparent; outline: 0 none; font-size: 16px" ng-click="">
                       <div ng-style="{'background-color': (itemState(item.name)=='OFF') ? '#26FF33' : 'transparent' }">
                         {{itemState(item.name).substr(0,4)}}{{config.item_unit.replace("_"," ")}}
                         <div ng-if="(config.item_extension!=NULL)">
@@ -77,13 +81,13 @@ input:checked + .myslider:before {  -webkit-transform: translateX(26px);  -ms-tr
 
           
           <div ng-if="(config.item_type=='Toggle')">
-                    <button style="width:45%; height: 2em; border: 0; color: white; background: transparent; font-size: 16px" ng-click="sendCmd((item.name), (itemState(item.name)!='ON')?'ON':'OFF')">
+                    <button style="width:45%; height: 2em; border: 0; color: white; background: transparent; outline: 0 none; font-size: 16px" ng-click="sendCmd((item.name), (itemState(item.name)!='ON')?'ON':'OFF')">
                       <div ng-style="{'background-color': (itemState(item.name)=='ON') ? '#26FF33' : 'transparent' }">
                         <div ng-if="((config.item_icon_iconset)==NULL)"><widget-icon iconset="'freepik-household'" icon="'light-bulb-1'" /></div>
                         <div ng-if="((config.item_icon_iconset)!=NULL)"><widget-icon iconset='config.item_icon_iconset' icon='config.item_icon' /></div>
                       </div>
                     </button>
-                    <button style="width: 45%; height: 2em; border: 0; color: white; background: transparent; font-size: 16px" ng-click="sendCmd((item.name), (itemState(item.name)!='ON')?'ON':'OFF')">
+                    <button style="width: 45%; height: 2em; border: 0; color: white; background: transparent; outline: 0 none; font-size: 16px" ng-click="sendCmd((item.name), (itemState(item.name)!='ON')?'ON':'OFF')">
                       <div ng-style="{'background-color': (itemState(item.name)=='OFF') ? '#003399' : 'transparent' }">
                         <div ng-if="((config.item_icon_iconset)==NULL)"><widget-icon iconset="'freepik-household'" icon="'light-bulb-1'" /></div>
                         <div ng-if="((config.item_icon_iconset)!=NULL)"><widget-icon iconset='config.item_icon_iconset' icon='config.item_icon' /></div>
@@ -92,10 +96,10 @@ input:checked + .myslider:before {  -webkit-transform: translateX(26px);  -ms-tr
             </div>
 
             	<div ng-if="(config.item_type=='Rollershutter')">
-                <div style="height:40px;">
-                <button style="width: 15%; height: 2em; border: 0; color: white; background: transparent; font-size: 16px" ng-click="sendCmd((item.name), 'UP')">&uarr;</button>
-                <button style="width: 50%; height: 2em; border: 0; color: white; background: transparent; font-size: 16px" ng-click="sendCmd((item.name), 'STOP')">Stop</button>
-                <button style="width: 15%; height: 2em; border: 0; color: white; background: transparent; font-size: 16px" ng-click="sendCmd((item.name), 'DOWN')">&darr;</button>
+                <div style="height: 40px; line-height: 40px; display: flex; align-items: center;">
+                <button style="flex-grow: 1; height: 40px; border: 0; color: white; background: transparent; outline: 0 none; font-size: 24px" ng-click="sendCmd((item.name), 'UP')">&uarr;</button>
+                <button style="flex-grow: 2; height: 40px; border: 0; color: white; background: transparent; outline: 0 none; font-size: 16px" ng-click="sendCmd((item.name), 'STOP')">Stop</button>
+                <button style="flex-grow: 1; height: 40px; border: 0; color: white; background: transparent; outline: 0 none; font-size: 24px" ng-click="sendCmd((item.name), 'DOWN')">&darr;</button>
                 </div>
             </div>
         </td>
@@ -113,9 +117,9 @@ input:checked + .myslider:before {  -webkit-transform: translateX(26px);  -ms-tr
               </div>
 
             	<div ng-if="(config.item_type=='Rollershutter')">
-                <button style="width: 15%; height: 2em; border: 0; color: white; background: transparent; font-size: 16px" ng-click="sendCmd((config.item_groupid), 'UP')">&uarr;</button>
-                <button style="width: 50%; height: 2em; border: 0; color: white; background: transparent; font-size: 16px" ng-click="sendCmd((config.item_groupid), 'STOP')">Stop</button>
-                <button style="width: 15%; height: 2em; border: 0; color: white; background: transparent; font-size: 16px" ng-click="sendCmd((config.item_groupid), 'DOWN')">&darr;</button>
+                <button style="width: 15%; height: 2em; border: 0; color: white; background: transparent; outline: 0 none; font-size: 16px" ng-click="sendCmd((config.item_groupid), 'UP')">&uarr;</button>
+                <button style="width: 50%; height: 2em; border: 0; color: white; background: transparent; outline: 0 none; font-size: 16px" ng-click="sendCmd((config.item_groupid), 'STOP')">Stop</button>
+                <button style="width: 15%; height: 2em; border: 0; color: white; background: transparent; outline: 0 none; font-size: 16px" ng-click="sendCmd((config.item_groupid), 'DOWN')">&darr;</button>
             </div>
           </div>
         </td>
