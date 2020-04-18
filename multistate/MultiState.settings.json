@@ -44,14 +44,21 @@
             "type": "checkbox",
             "id": "item_showsummary",
             "label": "Show summary of states",
-            "default": false,
+'            "default": false,
             "description": "Check if you want to see how many items are in the \"on\" state"
         },
         {
             "type": "checkbox",
             "id": "item_switchgroupall",
             "label": "Offer general switch for all items",
-            "description": "Check here to switch all items at once (No for Windows useful)",
+            "description": "Check here to switch all items at once (Not useful for Windows)",
+            "default": false
+        },
+        {
+            "type": "checkbox",
+            "id": "item_aligntop",
+            "label": "Align the widget contents to top",
+            "description": "Show the widget buttons aligned to the top of the widget",
             "default": false
         },
         {

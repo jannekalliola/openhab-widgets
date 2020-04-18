@@ -6,6 +6,7 @@ The original widget is implemented by [Michael](https://community.openhab.org/u/
 Changes:
 
 * Items are ordered by their label.
+* The widget can be configured to align the buttons on top, handy to make several widgets of different sizes look neater.
 * The switch items are now shown without the iOS style indicator, instead the state is indicated with background colour change. This saves space on small displays. The code for the old mode is still in the HTML file.
 * Show summary of states and all on/off are now off by default.
 * German words have been removed or changed to English.
