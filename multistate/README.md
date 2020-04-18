@@ -8,6 +8,8 @@ Changes:
 * Items are ordered by their label.
 * The widget can be configured to align the buttons on top, handy to make several widgets of different sizes look neater.
 * The switch items are now shown without the iOS style indicator, instead the state is indicated with background colour change. This saves space on small displays. The code for the old mode is still in the HTML file.
+* Turning on and off all switches now follows the same layout as an individual switch.
+* Dimmers with value 100 are now counted also as 'on' for the count on top of the widget.
 * The rollershutter items have a bit different display that is easier to read and click. It takes a bit more space horizontally.
 * Show summary of states and all on/off are now off by default.
 * German words have been removed or changed to English.
