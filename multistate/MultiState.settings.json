@@ -44,7 +44,7 @@
             "type": "checkbox",
             "id": "item_showsummary",
             "label": "Show summary of states",
-'            "default": false,
+            "default": false,
             "description": "Check if you want to see how many items are in the \"on\" state"
         },
         {
