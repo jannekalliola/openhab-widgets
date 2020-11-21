@@ -40,10 +40,11 @@ input:checked + .myslider:before {  -webkit-transform: translateX(26px);  -ms-tr
               </div>
             </div>
             <div ng-if="(config.item_type=='Window')">
-                <div ng-style="{'background-color': (itemState(item.name)=='OPEN') ? '#26FF33' : 'transparent' }">
+
+                <div ng-style="{'background-color': (itemState(item.name)!='CLOSED') ? ((itemState(item.name)=='TILTED') ? '#FFE300' : '#FF0000') : 'transparent' }">
                     <button style="width: 100%; height: 2em; border: 0; color: white; background: transparent; outline: 0 none; font-size: 16px" ng-click="">
-                        <div ng-if="((config.item_icon_iconset)==NULL)"><widget-icon iconset="'freepik-household'" icon="'window-9'" /></div>
-                        <div ng-if="((config.item_icon_iconset)!=NULL)"><widget-icon iconset='config.item_icon_iconset' icon='config.item_icon' /></div>
+                        <div ng-if="((config.item_icon_iconset)==NULL)"><widget-icon iconset="'freepik-household'" icon="'window-9'"  state="itemState(item.name)"  /></div>
+                        <div ng-if="((config.item_icon_iconset)!=NULL)"><widget-icon iconset='config.item_icon_iconset' icon='config.item_icon' state="itemState(item.name)"  /></div>
                     </button>
                 </div>
             </div>
