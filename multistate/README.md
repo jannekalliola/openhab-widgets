@@ -11,6 +11,7 @@ Changes:
 * Turning on and off all switches now follows the same layout as an individual switch.
 * Dimmers with value 100 are now counted also as 'on' for the count on top of the widget.
 * The rollershutter items have a bit different display that is easier to read and click. It takes a bit more space horizontally.
+* Windows have state colours (red = open, yellow = tilted, no background when closed) and different icons when opened or closed.
 * Show summary of states and all on/off are now off by default.
 * German words have been removed or changed to English.
 * A new configuration setting to remove extra words from the items. For example, if the item labels end with "Light" for Amazon Alexa, it can be removed to make the widget more pleasant to the eye. The word can be be in any location of the label.
