@@ -21,7 +21,7 @@
         },
         {
             "type": "choice",
-            "choices": "Switch,Toggle,Rollershutter,Window,Showvalues_ON,Showvalues_OFF",
+            "choices": "Switch,Toggle,Rollershutter,Window,Showvalues_ON,Showvalues_OFF,Humidity",
             "id": "item_type",
             "label": "Type of items to display",
             "default": "Switch",
@@ -73,6 +73,20 @@
             "id": "item_unit",
             "label": "Unit",
             "description": "If a unit shall be displayed, enter it here. E.g. \"_°C\" - with a leading underscore (converted to blanks) to create a distance"
+        },
+        {
+            "type": "number",
+            "id": "humidity_low",
+            "default": "60",
+            "label": "Humidity Low Value",
+            "description": "Value below this is rated as a Low Humidity Value"
+        },
+        {
+            "type": "number",
+            "id": "humidity_high",
+            "default": "70",
+            "label": "Humidity High Value",
+            "description": "Value above this is rated as a High Humidity Value"
         }
-    ]
+]
 
