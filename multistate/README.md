@@ -19,6 +19,7 @@ Changes:
 * Some extra checks to set the item to a good state when it has not been initialised by OpenHAB yet. This is the case, for example, for KNX devices that are not been activated after OpenHAB has been restarted.
 * Buttons do not get hovering borders after clicking anymore.
 * If OpenHAB does not know the position of a rollershutter, it gives NULL value. This is no longer shown in the UI.
+* Can display a list of Humidity Values and color the background if the Values are below or above Low and High value (configurable)
 
 
 Preview Images:
