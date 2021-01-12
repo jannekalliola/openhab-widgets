@@ -81,6 +81,22 @@ input:checked + .myslider:before {  -webkit-transform: translateX(26px);  -ms-tr
               </div>
             </div>
 
+            <div ng-if="(config.item_type=='Humidity')">
+              <div ng-style="{'height': (itemValue(item.name + '_soll')!='N/A') ? '40px' : '25px' }">
+                    <button style="width:100%; height: 2em; border: 0; color: white; background: transparent; outline: 0 none; font-size: 16px" ng-click="">
+                      <div ng-style="{'background-color': (itemState(item.name) >= '{{config.humidity_low}}') ? ((itemState(item.name) >= '{{config.humidity_high}}') ? '#FF0000' : '#FF9900') : 'transparent' }">
+                        {{('%.0f' | sprintf:itemValue(item.name)).substr(0,4)}}{{config.item_unit.replace("_"," ")}}
+                        <div ng-if="(config.item_extension!=NULL)">
+                          <div ng-if="itemValue(item.name + config.item_extension)!='N/A'">
+                            <div style="color:#606060;">
+                        		[ {{itemState(item.name+config.item_extension).substr(0,4)}}{{config.item_unit.replace("_"," ");}} ]
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </button>
+              </div>
+            </div>
           
           <div ng-if="(config.item_type=='Toggle')">
                     <button style="width:45%; height: 2em; border: 0; color: white; background: transparent; outline: 0 none; font-size: 16px" ng-click="sendCmd((item.name), (itemState(item.name)!='ON')?'ON':'OFF')">
