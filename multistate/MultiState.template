@@ -2,6 +2,6 @@
     "template": "%%HTML%%",
     "name": "MultiState / MultiItem display of a group of values in one widget",
     "author": "Michael Martens, changes by Janne Kalliola",
-    "description": "V1.1 - Apr 2020 - Items of a group are shown, depending on config they are just displayed or can be changed.",
+    "description": "V1.2 - Apr 2021 - Items of a group are shown, depending on config they are just displayed or can be changed.",
 	%%SETTINGS%%
 }

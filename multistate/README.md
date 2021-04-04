@@ -3,9 +3,14 @@ Multistate widget to control a group of switches, rollershutters, and other item
 
 The original widget is implemented by [Michael](https://community.openhab.org/u/martmiwp/summary) in this [thread]( https://community.openhab.org/t/custom-widget-multi-state-widget/35913/1).
 
+Current version is 1.2.
 
 Changes:
 
+V1.2
+Switch item names can be configured non-visible based on their value.
+
+V1.1
 * Items are ordered by their label.
 * The widget can be configured to align the buttons on top, handy to make several widgets of different sizes look neater.
 * The switch items are now shown without the iOS style indicator, instead the state is indicated with background colour change. This saves space on small displays. The code for the old mode is still in the HTML file.

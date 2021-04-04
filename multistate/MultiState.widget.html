@@ -14,6 +14,8 @@ input:checked + .myslider:before {  -webkit-transform: translateX(26px);  -ms-tr
 .nosliderOn {  position: absolute;  cursor: pointer;  top: 0;  left: 0;  right: 0;  bottom: 0;  width: 45px;  background-color: #26FF33; }
 .nosliderOn.round {  border-radius: 30px;}
 .switchOn { background-color: #395673; }
+.switchOn div.showOnlyOff { font-size: 0; }
+.switchOff div.showOnlyOn { font-size: 0; }
 .table>tbody>tr.groupAllRow>td { border-top: 2px solid #ddd; }
 <!-- thanks to ... for style @ https://community.openhab.org/t/template-for-many-switches-in-a-group/21739 -->
 </style>
@@ -25,7 +27,7 @@ input:checked + .myslider:before {  -webkit-transform: translateX(26px);  -ms-tr
 <table class="table ">
     <tr style="border-bottom: none;" ng-repeat="item in itemsInGroup(config.item_groupid) | orderBy:'label'">
 		<td ng-if="(config.item_type=='Switch')" ng-class="(itemValue(item.name)=='OFF' || itemValue(item.name)=='NULL' || itemValue(item.name)=='UNDEF' || itemValue(item.name)==0) ? 'switchOff':'switchOn'" colspan="2" style="padding: 0px;">
-			<div style="height:41px; padding: 8px; padding-top:12px;" ng-click="sendCmd(item.name, ((itemValue(item.name)=='OFF')||(itemValue(item.name)=='NULL') || (itemValue(item.name)=='UNDEF')) ? 'ON':((itemValue(item.name)==0) ? 100:'OFF'))">{{item.label.substr(config.item_skipncharsindescription,99).replace(config.item_replacestring, '')}}</div>
+			<div style="height:41px; padding: 8px; padding-top:12px;" ng-click="sendCmd(item.name, ((itemValue(item.name)=='OFF')||(itemValue(item.name)=='NULL') || (itemValue(item.name)=='UNDEF')) ? 'ON':((itemValue(item.name)==0) ? 100:'OFF'))" ng-class="(config.item_showonlyonoff=='Off') ? 'showOnlyOff' : (config.item_showonlyonoff=='On') ? 'showOnlyOn' : ''">{{item.label.substr(config.item_skipncharsindescription,99).replace(config.item_replacestring, '')}}</div>
 		</td>
 		<td ng-if="(config.item_type!='Switch')" class="text-right">
 			<div ng-if="(config.item_type!='Rollershutter')" style="height:25px; padding-top:4px;">{{item.label.substr(config.item_skipncharsindescription,99).replace(config.item_replacestring, '')}}</div>
