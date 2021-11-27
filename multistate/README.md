@@ -3,9 +3,12 @@ Multistate widget to control a group of switches, rollershutters, and other item
 
 The original widget is implemented by [Michael](https://community.openhab.org/u/martmiwp/summary) in this [thread]( https://community.openhab.org/t/custom-widget-multi-state-widget/35913/1).
 
-Current version is 1.2.
+Current version is 1.3.
 
 Changes:
+
+V1.3
+Switch shows now the state of the dimmable lights and other items that have a numeric value with a thin bar at the bottom of each item. If the switch is just on/off, no bar is shown.
 
 V1.2
 Switch item names can be configured non-visible based on their value.
