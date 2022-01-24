@@ -1,0 +1,63 @@
+{
+    "template": "<div class=\"box-content dummy\">\n    <div class=\"dummy-content\">\n        <span ng-if=\"config.item_name\">{{config.item_name}}</span>\n        <br ng-if=\"config.item_name\" />\n        <span ng-init=\"formatter = (config.item_first_format == '' ? '%s' : config.item_first_format)\" ng-style=\"{ 'font-size': config.item_first_font_size + 'pt' }\" class=\"value\">{{(formatter | sprintf:itemValue(config.item_first))}}{{config.item_first_suffix}}</span>\n        <span ng-style=\"{ 'font-size': config.item_separator_font_size + 'pt' }\">{{config.item_separator}}</span>\n        <span ng-init=\"formatter_two = (config.item_second_format == '' ? '%s' : config.item_second_format)\" ng-style=\"{ 'font-size': config.item_second_font_size + 'pt' }\" class=\"value\">{{(formatter_two | sprintf:itemValue(config.item_second))}}{{config.item_second_suffix}}</span>\n    </div>\n</div>\n",
+    "author": "Janne Kalliola",
+    "name": "Double Value",
+    "description": "V1.0 - Jan 2022 - Shows two values in single widget, usable - for example - to show temperature and thermostat values simultaneously",
+    "settings": [
+        {
+            "type": "string",
+            "id": "item_name",
+            "label": "Title"
+        },
+        {
+            "type": "item",
+            "id": "item_first",
+            "label": "First item"
+        },
+        {
+            "type": "number",
+            "id": "item_first_font_size",
+            "label": "Font size"
+        },
+        {
+            "type": "string",
+            "id": "item_first_suffix",
+            "label": "Suffix"
+        },
+        {
+            "type": "string",
+            "id": "item_first_format",
+            "label": "Format"
+        },
+        {
+            "type": "string",
+            "id": "item_separator",
+            "label": "Separator"
+        },
+        {
+            "type": "number",
+            "id": "item_separator_font_size",
+            "label": "Font size"
+        },
+        {
+            "type": "item",
+            "id": "item_second",
+            "label": "Second item"
+        },
+        {
+            "type": "number",
+            "id": "item_second_font_size",
+            "label": "Font size"
+        },
+        {
+            "type": "string",
+            "id": "item_second_suffix",
+            "label": "Suffix"
+        },
+        {
+            "type": "string",
+            "id": "item_second_format",
+            "label": "Format"
+        }
+    ]
+}	

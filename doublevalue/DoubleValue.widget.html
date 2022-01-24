@@ -1,0 +1,9 @@
+<div class="box-content dummy">
+    <div class="dummy-content">
+        <span ng-if="config.item_name">{{config.item_name}}</span>
+        <br ng-if="config.item_name" />
+        <span ng-init="formatter = (config.item_first_format == '' ? '%s' : config.item_first_format)" ng-style="{ 'font-size': config.item_first_font_size + 'pt' }" class="value">{{(formatter | sprintf:itemValue(config.item_first))}}{{config.item_first_suffix}}</span>
+        <span ng-style="{ 'font-size': config.item_separator_font_size + 'pt' }">{{config.item_separator}}</span>
+        <span ng-init="formatter_two = (config.item_second_format == '' ? '%s' : config.item_second_format)" ng-style="{ 'font-size': config.item_second_font_size + 'pt' }" class="value">{{(formatter_two | sprintf:itemValue(config.item_second))}}{{config.item_second_suffix}}</span>
+    </div>
+</div>

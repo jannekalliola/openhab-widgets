@@ -1,0 +1,7 @@
+{
+    "template": "%%HTML%%",
+    "author": "Janne Kalliola",
+    "name": "Double Value",
+    "description": "V1.0 - Jan 2022 - Shows two values in single widget, usable - for example - to show temperature and thermostat values simultaneously",
+	%%SETTINGS%%
+}	

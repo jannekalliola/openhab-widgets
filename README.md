@@ -7,6 +7,7 @@ Read the separate README.md files in each widget directory for more information.
 
 * **MultiState** – provides a handy widget to control a group of switches or rollershutters or display just multiple humidity values.
 * **SonosControlWithArt** – control Sonos playback and shows album art.
+* **DoubleValue** - shows two values side by side.
 
 ## OpenHAB widget
 
